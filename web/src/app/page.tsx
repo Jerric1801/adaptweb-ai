@@ -1,6 +1,5 @@
 import Link from "next/link";
 import LiveDemo from "@/components/LiveDemo";
-import Waitlist from "@/components/Waitlist";
 import { Logo, LogoMark } from "@/components/Logo";
 import {
   CrackedHourglass,
@@ -98,12 +97,21 @@ export default function Home() {
             <a href="#patterns" className="hover:text-ink">What it removes</a>
             <a href="#how" className="hover:text-ink">How it works</a>
           </div>
-          <a
-            href="#get"
-            className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5"
-          >
-            Get early access
-          </a>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/dashboard/"
+              className="hidden rounded-full px-4 py-2 text-sm font-semibold text-ink/70 hover:text-ink sm:block"
+            >
+              Dashboard
+            </Link>
+            <a
+              href="/adaptweb-extension.zip"
+              download
+              className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream transition-transform hover:-translate-y-0.5"
+            >
+              Download for Chrome
+            </a>
+          </div>
         </nav>
       </header>
 
@@ -137,7 +145,7 @@ export default function Home() {
               href="#get"
               className="rounded-full border-2 border-ink px-6 py-3 font-semibold transition-colors hover:bg-ink hover:text-cream"
             >
-              Join the early build
+              Get it free — no waitlist
             </a>
           </div>
           <dl className="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-ink/10 pt-6">
@@ -421,38 +429,91 @@ export default function Home() {
 
       {/* Get */}
       <section id="get" className="scroll-mt-20 bg-ink py-20 text-cream">
-        <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 md:grid-cols-2">
-          <div>
-            <p className="mono-label text-xs text-lime">Get AdaptWeb</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-5xl">
-              Take the pressure off your browser.
-            </h2>
-            <p className="mt-5 text-cream/65">
-              The Chrome Web Store listing is in review. Join the list and we’ll send the early build with a
-              60-second install guide.
-            </p>
-            <ol className="mt-8 space-y-3 text-sm">
-              {[
-                "Download the early build (.zip) from your invite email",
-                "Open chrome://extensions and switch on Developer mode",
-                "Click “Load unpacked”, pick the folder — done",
-              ].map((s, i) => (
-                <li key={s} className="flex gap-3">
-                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-lime font-mono text-xs text-ink">
-                    {i + 1}
-                  </span>
-                  <span className="text-cream/80">{s}</span>
-                </li>
-              ))}
-            </ol>
-            <div className="mt-8 inline-flex items-center gap-3 rounded-2xl border border-cream/15 px-4 py-3">
-              <span className="h-2.5 w-2.5 rounded-full bg-amber" />
-              <span className="text-sm">Chrome Web Store</span>
-              <span className="mono-label text-[10px] text-cream/50">In review</span>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-2xl">
+              <p className="mono-label text-xs text-lime">Get AdaptWeb · open access</p>
+              <h2 className="mt-3 font-display text-4xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-5xl">
+                Take the pressure off your browser. Right now.
+              </h2>
             </div>
+            <p className="max-w-sm text-cream/65">
+              No waitlist, no invite codes, no countdown. Everything is open — download, install, and you’re in.
+            </p>
           </div>
-          <div className="rounded-[32px] bg-ink-soft p-6 sm:p-8">
-            <Waitlist />
+
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {/* Download */}
+            <a
+              href="/adaptweb-extension.zip"
+              download
+              className="group flex flex-col rounded-[28px] bg-lime p-6 text-ink transition-transform hover:-translate-y-1"
+            >
+              <span className="mono-label text-[10px] text-forest">01 · Extension</span>
+              <p className="mt-4 font-display text-2xl font-semibold leading-tight tracking-tight">
+                Download for Chrome
+              </p>
+              <p className="mt-2 text-sm text-ink/70">The full extension as a .zip. Works in Chrome, Edge, Arc and Brave.</p>
+              <span className="sticker mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-cream px-4 py-2 text-sm font-semibold">
+                adaptweb-extension.zip ↓
+              </span>
+            </a>
+
+            {/* Install */}
+            <div className="flex flex-col rounded-[28px] bg-ink-soft p-6">
+              <span className="mono-label text-[10px] text-lime">02 · Install in 60s</span>
+              <ol className="mt-4 space-y-3 text-sm">
+                {[
+                  "Unzip the download",
+                  "Open chrome://extensions, turn on Developer mode",
+                  "Click “Load unpacked”, pick the folder, pin it",
+                ].map((s, i) => (
+                  <li key={s} className="flex gap-3">
+                    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-lime font-mono text-xs text-ink">
+                      {i + 1}
+                    </span>
+                    <span className="text-cream/80">{s}</span>
+                  </li>
+                ))}
+              </ol>
+              <Link href="/install/" className="mt-auto pt-5 text-sm font-semibold text-lime hover:underline">
+                Full install guide →
+              </Link>
+            </div>
+
+            {/* Dashboard */}
+            <Link
+              href="/dashboard/"
+              className="flex flex-col rounded-[28px] bg-cream p-6 text-ink transition-transform hover:-translate-y-1"
+            >
+              <span className="mono-label text-[10px] text-forest">03 · Dashboard</span>
+              <p className="mt-4 font-display text-2xl font-semibold leading-tight tracking-tight">
+                See everything we stripped
+              </p>
+              <p className="mt-2 text-sm text-ink/70">
+                Patterns removed, fees surfaced, reading mode synced to your extension. Sign in with a 6-digit code.
+              </p>
+              <span className="mt-auto pt-5 text-sm font-semibold">Open dashboard →</span>
+            </Link>
+
+            {/* Demo */}
+            <a
+              href="#demo"
+              className="flex flex-col rounded-[28px] border-2 border-cream/15 p-6 transition-colors hover:border-lime"
+            >
+              <span className="mono-label text-[10px] text-lime">04 · No install needed</span>
+              <p className="mt-4 font-display text-2xl font-semibold leading-tight tracking-tight">
+                Try the live demo
+              </p>
+              <p className="mt-2 text-sm text-cream/65">Flip the switch on a real-looking store page, right here.</p>
+              <span className="mt-auto pt-5 text-sm font-semibold text-lime">Back to the demo ↑</span>
+            </a>
+          </div>
+
+          <div className="mt-8 inline-flex items-center gap-3 rounded-2xl border border-cream/15 px-4 py-3">
+            <span className="h-2.5 w-2.5 rounded-full bg-amber" />
+            <span className="text-sm">Chrome Web Store one-click install</span>
+            <span className="mono-label text-[10px] text-cream/50">Coming soon</span>
           </div>
         </div>
       </section>

@@ -19,7 +19,7 @@ cd web && npm i @supabase/supabase-js
   2. 6-digit code field → `verifyOtp({ email, token, type: "email" })` → `router.push("/dashboard/")`.
   3. The magic link in the same email also works (`detectSessionInUrl`).
   4. Copy: calm, no urgency ("We'll email you a 6-digit code.").
-- Nav (landing + app pages): add "Dashboard" (when signed in) / "Sign in". Keep the landing nav otherwise as is.
+- Nav: landing already links "Dashboard" → `/dashboard/` (which redirects to `/login/` when signed out). App pages reuse the same header.
 
 Until A's G1 lands, mock data behind `const MOCK = !process.env.NEXT_PUBLIC_SUPABASE_URL || …` toggles.
 
@@ -45,7 +45,7 @@ Charts: hand-built SVG (like the landing gauge) or a light lib. Follow the datav
   3. Load unpacked → pick the folder → pin it
 
   Plus a "Chrome Web Store — in review" badge and a "Sign in to sync with your dashboard" link.
-- Landing: in the `#get` section, replace the "from your invite email" step with a real **Download (.zip)** button linking `/adaptweb-extension.zip` plus a link to `/install/`. Keep the waitlist. Hero secondary CTA → "Install the early build".
+- Landing is **open access, no waitlist** (done 2026-11-02): nav "Download for Chrome" + "Dashboard", and the `#get` section has 4 cards (Download zip · Install steps → `/install/` · Dashboard → `/dashboard/` · Live demo). The waitlist component was deleted — don't bring it back. Your job: make `/install/` and `/dashboard/` exist so those links resolve.
 - Until C ships the zip, the link 404s. That's fine. Check `status/C.md`.
 
 ## D4 — `/privacy` (H2) — needed for Web Store
