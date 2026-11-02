@@ -1,11 +1,23 @@
 {
   "manifest_version": 3,
   "name": "AdaptWeb AI",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The web, without the pressure. Strips dark patterns, shows the true total, and reshapes pages for how you read.",
   "action": {
     "default_popup": "popup.html",
-    "default_title": "AdaptWeb AI"
+    "default_title": "AdaptWeb AI",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
   "background": {
     "service_worker": "background.js",
@@ -19,6 +31,6 @@
       "run_at": "document_idle"
     }
   ],
-  "permissions": ["storage", "tabs", "activeTab"],
+  "permissions": ["storage", "tabs", "activeTab", "alarms"],
   "host_permissions": ["https://pkfzydrmnagrxpkilufs.supabase.co/*"]
 }

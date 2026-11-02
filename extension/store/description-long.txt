@@ -1,0 +1,18 @@
+AdaptWeb AI is a browser extension that puts you back in control of every page you visit.
+
+🧹 STRIP DARK PATTERNS
+Automatically removes fake countdown timers, false scarcity claims ("Only 2 left!"), fake social proof notifications, nagging pop-ups, pre-ticked add-ons, and confirmshaming copy — so you can make decisions without pressure.
+
+💰 TRUE TOTAL
+See the real price before you check out. AdaptWeb surfaces hidden shipping fees, service charges, and estimated tax that sites bury until the last step.
+
+📖 THREE READING MODES
+Switch between Analytical (specs & comparisons front-and-centre), Minimalist (only what you need to decide), and Visual (big imagery, scannable facts) — and your preference syncs across devices.
+
+🔒 PRIVACY FIRST
+AdaptWeb never reads your input fields, passwords, or personal data. It only scans visible page elements to identify patterns. Your browsing history stays on your device.
+
+⚡ AI-POWERED ACCURACY
+For sites not yet in our curated library, AdaptWeb's AI engine analyses the page structure and generates rules on the fly — getting smarter with every session.
+
+Sign up with just an email to unlock your personal dashboard, sync settings, and see a history of every dark pattern caught across all your sessions.
