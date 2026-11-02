@@ -3,20 +3,20 @@
 | Milestone | State | Note |
 |---|---|---|
 | Kickoff | ✅ | `supabase init` done, config.toml auth set (anon on, OTP 6, site_url/redirects) |
-| A1 link + db push (G1) | ⛔ blocked | CLI logged into wrong account — see Needs |
-| A2 auth config | ⏳ | config.toml ready; needs `supabase config push` after link |
-| A3 analyze-page | 🟡 code + fixture written, not deployed | needs link + `ANTHROPIC_API_KEY` |
-| A4 curated rules | ⏳ | after A1 |
+| A1 migrations (G1) | ✅ | applied by user via SQL editor (5432 blocked on their network, so no `db push`; `supabase link` never succeeded). REST smoke passes: site_rules `[]`, waitlist 201, anon signup → profile row, seed_my_demo_events 180 rows, dashboard_summary OK |
+| A2 auth config | ✅ | `config push` done; anon signup works; profile trigger fires. Email OTP template (`{{ .Token }}`) not yet verified |
+| A3 analyze-page (G3-backend) | ✅ | deployed on **Gemini** (`gemini-2.5-flash`, secret `GEMINI_API_KEY`, override via `GEMINI_MODEL`). Fixture → 6 correct rules in 3.2s; 2nd call `cached: true` |
+| A4 curated rules | ⏳ | 0003 must be applied via SQL editor (no db push) |
 | A5 README/pre-warm | ⏳ | |
 
 ## Needs from the user
-- **Link blocked:** `supabase projects list` shows only `uonporvoqhxnpfwkfgzl` (santoengrg's Project). Target `pkfzydrmnagrxpkilufs` not visible → CLI logged into wrong account. Run `! supabase logout` then `! supabase login` with the account that owns `pkfzydrmnagrxpkilufs` (or confirm the ref is wrong).
-- DB password for `supabase link` (once, when asked).
-- `ANTHROPIC_API_KEY` for `supabase secrets set`.
-- Real Netlify URL (config.toml currently uses placeholder `https://adaptweb-ai.netlify.app`).
+- Delete smoke row in SQL editor: `delete from waitlist where email='smoke@test.dev';`
+- Real Netlify URL (config.toml uses placeholder `https://adaptweb-ai.netlify.app`).
+- Function URL: https://pkfzydrmnagrxpkilufs.supabase.co/functions/v1/analyze-page
 
 ## Requests from other workstreams
 <!-- Other terminals: add "- [from X] request" here. Owner ticks when done. -->
 
 ## Log
-- Sonnet 5.5 note: forced `tool_choice` and non-default `temperature` return 400, so analyze-page uses `tool_choice: auto` + system instruction, `output_config.effort: low`, no temperature (deviation from A-SUPABASE.md A3).
+- Switched LLM from Claude to Gemini at user request. Replaced the Sonnet 5.5 note: no `tool_choice`/temperature issue now; uses `responseJsonSchema` + temperature 0, thinking budget 0.
+- Test row `demo-store.example` (source=ai) exists in site_rules from fixture test; harmless, delete before demo if wanted.

@@ -1,4 +1,4 @@
-// analyze-page: PageSnapshot -> validated SiteRuleSet (cache -> Claude -> validate -> upsert)
+// analyze-page: PageSnapshot -> validated SiteRuleSet (cache -> Gemini -> validate -> upsert)
 import { createClient } from "npm:@supabase/supabase-js@2";
 import type {
   AnalyzeResponse,
@@ -28,7 +28,7 @@ const AI_TTL_MS = 7 * 24 * 3600 * 1000;
 const BANNED_SELECTORS = new Set(["html", "body", "main", "header"]);
 
 const SYSTEM_PROMPT = `You classify manipulative design ("dark patterns") on a web page from a redacted DOM snapshot.
-Call the emit_rules tool exactly once with your result. Do not reply with plain text.
+Reply with a single JSON object {"rules": [...], "confidence": number} matching the response schema.
 
 Rules:
 - Output only rules whose "selector" is copied exactly from a snapshot node "selector" (annotate_total may instead use a snapshot "prices" selector).
@@ -43,10 +43,7 @@ Rules:
 - Never invent prices. Never target html/body/main/header, the product title, or the add-to-cart button.
 - Prefer precision over recall. Add a reason of at most 8 words per rule. Set confidence 0-1 per rule and overall.`;
 
-const EMIT_RULES_TOOL = {
-  name: "emit_rules",
-  description: "Emit the dark-pattern rules found on the page.",
-  input_schema: {
+const RESPONSE_SCHEMA = {
     type: "object",
     properties: {
       rules: {
@@ -86,7 +83,6 @@ const EMIT_RULES_TOOL = {
       confidence: { type: "number" },
     },
     required: ["rules", "confidence"],
-  },
 };
 
 function json(body: AnalyzeResponse, status = 200) {
@@ -119,31 +115,33 @@ export function validateRules(raw: unknown, snapshot: PageSnapshot): Rule[] {
   return out;
 }
 
-async function callClaude(snapshot: PageSnapshot, model: string) {
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "x-api-key": Deno.env.get("ANTHROPIC_API_KEY") ?? "",
-      "anthropic-version": "2023-06-01",
-      "content-type": "application/json",
+async function callGemini(snapshot: PageSnapshot, model: string) {
+  const res = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
+    {
+      method: "POST",
+      headers: {
+        "x-goog-api-key": Deno.env.get("GEMINI_API_KEY") ?? "",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents: [{ role: "user", parts: [{ text: JSON.stringify(snapshot) }] }],
+        generationConfig: {
+          temperature: 0,
+          maxOutputTokens: 4000,
+          responseMimeType: "application/json",
+          responseJsonSchema: RESPONSE_SCHEMA,
+          thinkingConfig: { thinkingBudget: 0 },
+        },
+      }),
     },
-    // Sonnet 5.5: forced tool_choice and non-default temperature return 400,
-    // so use tool_choice auto + system instruction; low effort for latency.
-    body: JSON.stringify({
-      model,
-      max_tokens: 4000,
-      output_config: { effort: "low" },
-      system: SYSTEM_PROMPT,
-      tools: [EMIT_RULES_TOOL],
-      tool_choice: { type: "auto" },
-      messages: [{ role: "user", content: JSON.stringify(snapshot) }],
-    }),
-  });
-  if (!res.ok) throw new Error(`anthropic ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  );
+  if (!res.ok) throw new Error(`gemini ${res.status}: ${(await res.text()).slice(0, 300)}`);
   const data = await res.json();
-  const block = (data.content ?? []).find((b: { type: string }) => b.type === "tool_use");
-  if (!block) throw new Error(`no tool_use in response (stop_reason=${data.stop_reason})`);
-  return block.input as { rules: Rule[]; confidence: number };
+  const text = data.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text ?? "").join("");
+  if (!text) throw new Error(`empty gemini response (finish=${data.candidates?.[0]?.finishReason})`);
+  return JSON.parse(text) as { rules: Rule[]; confidence: number };
 }
 
 Deno.serve(async (req) => {
@@ -180,9 +178,9 @@ Deno.serve(async (req) => {
       return json({ ruleSet: aiRow, cached: true, ms: Date.now() - t0 });
     }
 
-    // --- Claude ---
-    const model = Deno.env.get("ANTHROPIC_MODEL") ?? "claude-sonnet-5-5";
-    const out = await callClaude(snapshot, model);
+    // --- LLM ---
+    const model = Deno.env.get("GEMINI_MODEL") ?? "gemini-2.5-flash";
+    const out = await callGemini(snapshot, model);
     const rules = validateRules(out.rules, snapshot);
 
     // --- upsert ---
