@@ -6,11 +6,14 @@
 
 | Path | What |
 |---|---|
-| `web/` | Next.js 16 marketing site — landing (`/`) and brand guidelines (`/brand`). Static export. |
-| `supabase/migrations/` | SQL migrations (run in Supabase SQL editor) |
+| `web/` | Next.js 16 site — landing, dashboard, install. Static export → Netlify. |
+| `extension/` | MV3 Chrome extension (esbuild + Preact). `npm run dev`, load `dist/` unpacked. |
+| `contracts/` | Frozen shared types across all workstreams |
+| `supabase/` | Migrations + Edge Functions (`supabase db push`, `supabase functions deploy`) |
 | `docs/PLAN.md` | Product decisions, architecture, schema, phases, SharkNinja walkthrough |
 | `docs/CONSIDERATIONS.md` | Risks: demo, honesty/legal, privacy, AI quality, Web Store |
 | `docs/brand/BRAND.md` | Brand quick reference |
+| `docs/execution/` | **4 parallel workstreams — start at `00-OVERVIEW.md`** |
 
 ## Run locally
 
@@ -27,4 +30,4 @@ Connect this repo in Netlify — `netlify.toml` sets base `web`, command `npm ru
 
 ## Supabase setup
 
-Run `supabase/migrations/0001_waitlist.sql` in the Supabase SQL editor to enable the waitlist form.
+Workstream A applies migrations with `supabase db push` — see `docs/execution/A-SUPABASE.md`.

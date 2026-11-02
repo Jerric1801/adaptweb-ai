@@ -1,0 +1,22 @@
+/* Workstream C owns this file. Brand tokens: docs/brand/BRAND.md */
+:root {
+  --ink: #121412;
+  --ink-soft: #2a2c29;
+  --paper: #ece6db;
+  --cream: #faf6ef;
+  --lime: #b8f28f;
+  --lime-deep: #7fcb55;
+  --forest: #2d6a4f;
+  --ember: #ff7a2f;
+  --amber: #ffc94d;
+  --poppy: #e5484d;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  width: 360px;
+  min-height: 480px;
+  background: var(--ink);
+  color: var(--cream);
+  font: 14px/1.4 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}

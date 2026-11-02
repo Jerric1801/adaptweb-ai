@@ -1,0 +1,19 @@
+/* Workstream B owns this file. All injected UI is namespaced .aw-*  */
+.aw-hidden { display: none !important; }
+
+.aw-ghost {
+  all: initial;
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+  padding: 6px 10px;
+  border: 2px dashed rgba(127, 203, 85, 0.7);
+  border-radius: 12px;
+  background: rgba(184, 242, 143, 0.25);
+  color: #2d6a4f;
+  font: 500 11px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}

@@ -1,6 +1,6 @@
 # AdaptWeb AI — Brand Quick Reference
 
-Full guidelines deck lives at **`/brand`** on the site (`web/src/app/brand/page.tsx`). Tokens live in `web/src/app/globals.css`.
+Full guidelines deck was removed from the site (recover from git history, commit 7822e92, if needed). Tokens live in `web/src/app/globals.css`.
 
 ## Essence
 

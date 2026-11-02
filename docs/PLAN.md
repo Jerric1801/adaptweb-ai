@@ -18,7 +18,7 @@ Status: **pitch prototype** · Last updated 2026-11-02
 | Features | Dark-pattern stripping · True total price · Reading modes (Analytical / Minimalist / Visual) · Savings dashboard | All four in scope |
 | Install | Chrome Web Store (submit now) **+** `.zip` "Load unpacked" fallback | Web Store review is 1–7 days |
 | Demo | **Real sites** (travel, ticketing, fast fashion, big retail) + **SharkNinja** worked example | High impact — see risk mitigations in CONSIDERATIONS.md |
-| Brand | Greige paper, ink line, Lime (adapted) vs Ember (pressure); Bricolage Grotesque / Geist / Geist Mono | See `docs/brand/BRAND.md` and `/brand` |
+| Brand | Greige paper, ink line, Lime (adapted) vs Ember (pressure); Bricolage Grotesque / Geist / Geist Mono | See `docs/brand/BRAND.md` |
 | Site hosting | Next.js 16 **static export** on Netlify, from `/web` | Fastest reliable deploy; Supabase called client-side |
 
 ### Dropped from the original spec (and why)
@@ -53,7 +53,7 @@ Status: **pitch prototype** · Last updated 2026-11-02
                 │
         ┌───────▼────────┐           ┌──────────────────────────┐
         │  Claude API     │           │  Web (Next.js on Netlify)│
-        │  pattern classify│          │  landing · /brand ·      │
+        │  pattern classify│          │  landing · install ·     │
         │  + selector gen │           │  /dashboard (auth)       │
         └────────────────┘           └──────────────────────────┘
 ```
@@ -126,7 +126,7 @@ RLS: `site_rules` readable by `authenticated`, writable only by service role (Ed
 
 | # | Phase | Output | Status |
 |---|---|---|---|
-| 0 | Brand + landing | `/`, `/brand`, waitlist | ✅ shipped |
+| 0 | Brand + landing | `/`, waitlist, Phase-0 contracts + skeleton | ✅ shipped |
 | 1 | Extension skeleton | MV3, popup toggle, local heuristics on 2 pattern types | ⏳ |
 | 2 | Supabase core | schema above, auth in extension, Realtime profile sync | ⏳ |
 | 3 | AI rules | `analyze-page` Edge Function + cache; curated overrides | ⏳ |

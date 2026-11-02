@@ -1,0 +1,4 @@
+declare const __SUPABASE_URL__: string;
+declare const __SUPABASE_KEY__: string;
+declare const __WEB_URL__: string;
+declare const __DEV__: boolean;

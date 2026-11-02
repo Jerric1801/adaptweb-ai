@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "AdaptWeb AI",
+  "version": "0.1.0",
+  "description": "The web, without the pressure. Strips dark patterns, shows the true total, and reshapes pages for how you read.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AdaptWeb AI"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage", "tabs", "activeTab"],
+  "host_permissions": ["https://pkfzydrmnagrxpkilufs.supabase.co/*"]
+}
