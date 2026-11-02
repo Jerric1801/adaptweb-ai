@@ -38,7 +38,7 @@ const STEPS = [
   {
     n: "03",
     title: "Load unpacked and pin it",
-    body: "Click “Load unpacked”, choose the unzipped folder, then pin AdaptWeb from the puzzle-piece menu so it’s one click away.",
+    body: "Click “Load unpacked”, choose the unzipped “adaptweb-extension” folder (the one with manifest.json inside), then pin AdaptWeb from the puzzle-piece menu so it’s one click away.",
     art: OpenWindow,
   },
 ];
