@@ -1,0 +1,11 @@
+node_modules/
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Third-party brand reference — confidential, never commit
+docs/brand/sample-deck.pdf
+
+# Third-party moodboard images — local reference only
+docs/brand/vibe/

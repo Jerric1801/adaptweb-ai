@@ -1,0 +1,11 @@
+# Netlify: build the static Next.js export from /web
+[build]
+  base = "web"
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Publishable (client-safe) Supabase values. Never put the DB password or secret keys here.
+  NEXT_PUBLIC_SUPABASE_URL = "https://pkfzydrmnagrxpkilufs.supabase.co"
+  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_0WTKSufAZP6LbicrvMKhJA_X3SEkGtG"

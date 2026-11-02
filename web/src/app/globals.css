@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* AdaptWeb AI brand tokens — see docs/brand/BRAND.md */
+@theme {
+  --color-ink: #121412;
+  --color-ink-soft: #2a2c29;
+  --color-paper: #ece6db;
+  --color-cream: #faf6ef;
+  --color-lime: #b8f28f;
+  --color-lime-deep: #7fcb55;
+  --color-forest: #2d6a4f;
+  --color-ember: #ff7a2f;
+  --color-amber: #ffc94d;
+  --color-poppy: #e5484d;
+  --color-muted: #6e6b63;
+}
+
+@theme inline {
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-geist), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+
+/* Hatched fill, borrowed from the progress-bar vibe */
+.hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    currentColor 0 2px,
+    transparent 2px 7px
+  );
+}
+
+/* Sticker: thick ink outline + hard offset shadow, echoes the ink illustrations */
+.sticker {
+  border: 2px solid var(--color-ink);
+  box-shadow: 3px 3px 0 var(--color-ink);
+}
+
+.soft-card {
+  box-shadow:
+    0 1px 0 rgba(18, 20, 18, 0.04),
+    0 24px 48px -24px rgba(18, 20, 18, 0.18);
+}
+
+.mono-label {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(var(--r, 0deg));
+  }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 122, 47, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(255, 122, 47, 0);
+  }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 1.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float,
+  .animate-pulse-ring {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
