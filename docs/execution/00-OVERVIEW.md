@@ -52,6 +52,8 @@ You are workstream D (web app + deploy) for AdaptWeb AI. Read CLAUDE.md, docs/ex
 
 ## Things only YOU (the user) can do — do these at kickoff
 
+**Step-by-step version: [MANUAL-SETUP.md](MANUAL-SETUP.md)**
+
 | # | Action | Who needs it | Where |
 |---|---|---|---|
 | U1 | `supabase login` in terminal A (type `! supabase login`) | A | CLI → browser |

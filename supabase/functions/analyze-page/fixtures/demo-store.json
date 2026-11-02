@@ -1,0 +1,26 @@
+{
+  "snapshot": {
+    "url": "https://demo-store.example/products/aero-fryer",
+    "domain": "demo-store.example",
+    "path": "/products/aero-fryer",
+    "title": "AeroFry 6qt Air Fryer",
+    "lang": "en",
+    "nodes": [
+      { "selector": "#promo-timer", "tag": "div", "text": "FLASH SALE ends in 04:59 — hurry!", "attrs": { "id": "promo-timer", "class": "banner banner--urgent" }, "flags": ["has_timer_text", "is_fixed"] },
+      { "selector": ".stock-note", "tag": "p", "text": "Only 2 left in stock — order soon!", "attrs": { "class": "stock-note" }, "flags": ["has_scarcity_text"] },
+      { "selector": ".viewers", "tag": "p", "text": "37 people are viewing this right now", "attrs": { "class": "viewers" }, "flags": ["has_social_proof_text"] },
+      { "selector": ".price-main", "tag": "span", "text": "$79.99", "attrs": { "class": "price-main" }, "flags": ["has_price"] },
+      { "selector": ".price-note", "tag": "small", "text": "+ fees at checkout", "attrs": { "class": "price-note" }, "flags": [] },
+      { "selector": "#add-protection", "tag": "input", "text": "", "attrs": { "id": "add-protection", "type": "checkbox", "checked": "" }, "flags": ["checkbox_checked"] },
+      { "selector": "label[for=add-protection]", "tag": "label", "text": "Add 2-year protection plan for $12.99", "attrs": { "for": "add-protection" }, "flags": ["has_price"] },
+      { "selector": "#decline-offer", "tag": "a", "text": "No thanks, I'd rather pay full price", "attrs": { "id": "decline-offer", "href": "#" }, "flags": ["is_link"] },
+      { "selector": "#add-to-cart", "tag": "button", "text": "Add to cart", "attrs": { "id": "add-to-cart" }, "flags": ["is_button"] },
+      { "selector": "h1.product-title", "tag": "h1", "text": "AeroFry 6qt Air Fryer", "attrs": { "class": "product-title" }, "flags": [] },
+      { "selector": "main", "tag": "main", "text": "", "attrs": {}, "flags": [] }
+    ],
+    "prices": [
+      { "selector": ".price-main", "text": "$79.99", "value": 79.99, "currency": "USD", "kind": "item" },
+      { "selector": "label[for=add-protection]", "text": "$12.99", "value": 12.99, "currency": "USD", "kind": "addon" }
+    ]
+  }
+}
