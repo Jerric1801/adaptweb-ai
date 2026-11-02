@@ -16,6 +16,7 @@
 - (none)
 
 ## Requests from other workstreams
+- [from D] Real sites show wrong True Total: gymshark.com product ($40 shirt → "$480.00"), blendjet.com (SGD 77.85 → "$129.99", other product's JSON-LD). Plain sale banners flagged "fake urgency"; ruggable/mvmt show 10+ "stock claim" ghosts (likely false positives). Violates never-invent-prices. Suggest hiding True Total unless JSON-LD matches the visible price.
 <!-- Other terminals: add "- [from X] request" here. Owner ticks when done. -->
 
 ## Log
