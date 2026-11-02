@@ -24,7 +24,7 @@ Goal: an installable AdaptWeb AI extension that strips dark patterns on **real s
 - `contracts/types.ts`: every cross-boundary type. Patterns, rules, snapshot, page state, settings, messages, Edge Function I/O, DB rows, RPC rows.
 - `supabase/migrations/0001_waitlist.sql`, `0002_core.sql`: `site_rules`, `user_profiles` (+ signup trigger), `adaptation_events`, RLS, `dashboard_summary`, `dashboard_by_domain`, `seed_my_demo_events`, realtime publication. **Written, not yet applied** — A applies first.
 - `extension/`: builds and loads today. Stubs: `src/engine/index.ts` (B), `src/content/index.ts` (B), `src/background/index.ts` (C), `src/popup/main.tsx` (C).
-- `web/`: landing page live on Netlify, waitlist form, brand tokens in `globals.css`.
+- `web/`: landing page live on Netlify — open access (download / install / dashboard / demo cards, no waitlist), brand tokens in `globals.css`.
 
 ## How to launch the terminals
 
