@@ -1,15 +1,13 @@
 /**
- * IN-PAGE ENGINE — Workstream B owns everything in src/engine and src/content.
+ * IN-PAGE ENGINE — Workstream B.
  *
- * Public API (frozen; C never calls this directly, only content/index.ts does):
+ * Public API (frozen contract with content/index.ts):
  *   snapshot(doc)                    → PageSnapshot (redacted)
  *   detect(doc)                      → Rule[]  (local heuristics, no network)
  *   apply(rules, settings, source)   → AppliedChange[]  (idempotent)
  *   computeTrueTotal(doc, rules)     → TrueTotal | null
  *   applyMode(mode)                  → void  (relayout for reading mode)
  *   undoAll()                        → void  (restore original page)
- *
- * Phase-0 stubs below return empty results so the pipeline runs end to end.
  */
 import type {
   AppliedChange,
@@ -20,35 +18,45 @@ import type {
   Settings,
   TrueTotal,
 } from "../shared/contracts";
+import { apply as applyRules, undoAll as undoAllChanges } from "./apply";
+import { detect as detectDarkPatterns } from "./heuristics";
+import { applyMode as applyReadingMode, clearReadingMode, setModeContext } from "./modes";
+import { computeTrueTotal as computeTT, renderTrueTotalCard } from "./truetotal";
+import { snapshot as generateSnapshot } from "./snapshot";
 
-export function snapshot(doc: Document): PageSnapshot {
-  return {
-    url: location.origin + location.pathname,
-    domain: location.hostname.replace(/^www\./, ""),
-    path: location.pathname,
-    title: doc.title.slice(0, 160),
-    lang: doc.documentElement.lang || "en",
-    nodes: [],
-    prices: [],
-  };
+export function snapshot(doc: Document = document): PageSnapshot {
+  return generateSnapshot(doc);
 }
 
-export function detect(_doc: Document): Rule[] {
-  return []; // TODO(B): heuristics
+export function detect(doc: Document = document): Rule[] {
+  return detectDarkPatterns(doc);
 }
 
-export function apply(_rules: Rule[], _settings: Settings, _source: RuleSource): AppliedChange[] {
-  return []; // TODO(B): rule applier
+export function apply(
+  rules: Rule[],
+  settings: Settings,
+  source: RuleSource,
+  doc: Document = document,
+): AppliedChange[] {
+  return applyRules(rules, settings, source, doc);
 }
 
-export function computeTrueTotal(_doc: Document, _rules: Rule[]): TrueTotal | null {
-  return null; // TODO(B): drip pricing parser
+export function computeTrueTotal(doc: Document = document, rules: Rule[] = []): TrueTotal | null {
+  const result = computeTT(doc, rules);
+  renderTrueTotalCard(doc, result);
+  return result;
 }
 
-export function applyMode(_mode: ReadingMode): void {
-  // TODO(B): reading modes
+export function applyMode(mode: ReadingMode, doc: Document = document): void {
+  applyReadingMode(mode, doc);
 }
 
-export function undoAll(): void {
-  // TODO(B): restore
+export function undoAll(doc: Document = document): void {
+  undoAllChanges(doc);
+  clearReadingMode(doc);
 }
+
+export { setModeContext } from "./modes";
+export { renderTrueTotalCard } from "./truetotal";
+export { uniqueSelector } from "./selector";
+export { parsePrice, findHeadlinePrice } from "./price";

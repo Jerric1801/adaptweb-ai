@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AirCrisp Pro 6-Qt Air Fryer | Brightloop Home</title>
+  <meta property="og:title" content="AirCrisp Pro 6-Qt Air Fryer" />
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f4f1ea'/%3E%3Ccircle cx='200' cy='200' r='120' fill='%23222'/%3E%3Ctext x='200' y='210' font-size='24' fill='%23fff' text-anchor='middle'%3EAirCrisp Pro%3C/text%3E%3C/svg%3E" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "AirCrisp Pro 6-Qt Air Fryer",
+    "image": [
+      "https://images.example.com/aircrisp-pro-1.jpg"
+    ],
+    "description": "High performance 6-quart air fryer with rapid crisping technology.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Brightloop Home"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": 129.99,
+      "priceValidUntil": "2026-12-31",
+      "availability": "https://schema.org/InStock",
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": 14.99,
+          "currency": "USD"
+        }
+      }
+    }
+  }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #faf9f6; color: #1e1e1e; line-height: 1.5; }
+    header { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+
+    /* Urgency banner */
+    .urgency-banner {
+      background: #e63946;
+      color: #fff;
+      padding: 10px 16px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .timer-badge { background: rgba(0,0,0,0.25); padding: 2px 8px; border-radius: 4px; font-family: monospace; font-size: 15px; }
+
+    .main-container { max-width: 1100px; margin: 40px auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    @media (max-width: 768px) { .main-container { grid-template-columns: 1fr; } }
+
+    .gallery { position: relative; background: #fff; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #eaeaea; }
+    .gallery svg { width: 100%; max-width: 320px; height: auto; }
+    .badge-discount { position: absolute; top: 16px; left: 16px; background: #e63946; color: white; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; transform: rotate(-5deg); }
+
+    .product-info { display: flex; flex-direction: column; gap: 16px; }
+    .brand-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 600; }
+    h1 { font-size: 32px; line-height: 1.2; font-weight: 700; color: #111; }
+    .rating { font-size: 14px; color: #666; }
+    .rating .stars { color: #f59e0b; }
+
+    /* Live viewers */
+    .live-viewers { color: #e63946; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+    .pulse-dot { width: 8px; height: 8px; background: #e63946; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+    /* Price box */
+    .price-container { margin: 8px 0; }
+    .price-row { display: flex; align-items: baseline; gap: 12px; }
+    .current-price { font-size: 36px; font-weight: 700; color: #111; }
+    .was-price { font-size: 18px; color: #888; text-decoration: line-through; }
+    .drip-hint { font-size: 12px; color: #777; margin-top: 2px; }
+
+    /* Scarcity badge */
+    .scarcity-callout { background: #fee2e2; color: #b91c1c; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; display: inline-block; }
+
+    /* Checkbox addon */
+    .addon-card { display: flex; align-items: flex-start; gap: 12px; padding: 14px; border: 1px solid #ddd; border-radius: 12px; background: #fff; cursor: pointer; }
+    .addon-card input { margin-top: 3px; accent-color: #e63946; cursor: pointer; }
+    .addon-card span { font-size: 14px; color: #222; }
+
+    /* Action buttons */
+    .cta-button { background: #e63946; color: #fff; border: none; border-radius: 999px; padding: 16px 24px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s; width: 100%; text-align: center; }
+    .cta-button:hover { background: #d62828; }
+    .confirmshame-link { text-align: center; font-size: 13px; color: #666; text-decoration: underline; cursor: pointer; display: block; margin-top: 4px; }
+
+    /* Collapsed sections */
+    .accordion { border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; background: #fff; }
+    details { border-bottom: 1px solid #eee; }
+    details:last-child { border-bottom: none; }
+    summary { padding: 14px 18px; font-weight: 600; cursor: pointer; user-select: none; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 18px; font-weight: 400; }
+    details[open] summary::after { content: '−'; }
+    .accordion-body { padding: 14px 18px; border-top: 1px solid #eee; font-size: 14px; color: #444; background: #fafafa; }
+    .spec-table { width: 100%; border-collapse: collapse; }
+    .spec-table th, .spec-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #eee; }
+    .spec-table th { color: #666; font-weight: 500; width: 45%; }
+    .spec-table td { font-family: monospace; font-weight: 600; }
+
+    /* Fee breakdown in delivery accordion */
+    .fee-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+
+    /* Carousel */
+    .recommendations { max-width: 1100px; margin: 40px auto 60px; padding: 0 24px; }
+    .recommendations h2 { font-size: 22px; margin-bottom: 20px; font-weight: 700; }
+    .carousel { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 12px; }
+    .carousel-item { min-width: 200px; background: #fff; border: 1px solid #eaeaea; border-radius: 12px; padding: 16px; }
+    .carousel-item h4 { font-size: 14px; margin: 8px 0 4px; }
+    .carousel-item p { font-size: 13px; font-weight: 700; color: #111; }
+
+    /* Social proof toast */
+    .toast-social-proof {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border: 1px solid #eaeaea;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      z-index: 100;
+    }
+    .toast-icon { font-size: 20px; }
+    .toast-text strong { display: block; color: #111; }
+    .toast-text span { color: #888; font-size: 11px; }
+
+    /* Nagging newsletter popup */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .modal-card {
+      background: #fff;
+      width: 90%;
+      max-width: 480px;
+      border-radius: 20px;
+      padding: 36px 32px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #888;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+    .modal-card h2 { font-size: 26px; color: #111; margin-bottom: 8px; }
+    .modal-card p { font-size: 14px; color: #666; margin-bottom: 20px; }
+    .modal-input { width: 100%; padding: 12px 16px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; margin-bottom: 12px; }
+    .modal-btn { width: 100%; padding: 14px; background: #111; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- Nagging popup -->
+  <div id="newsletter-modal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <h2>Get 10% Off Your Order!</h2>
+      <p>Enter your email below to unlock your instant discount code.</p>
+      <input type="email" class="modal-input" placeholder="Enter your email address" />
+      <button class="modal-btn" onclick="document.getElementById('newsletter-modal').style.display='none'">Unlock My 10% Off</button>
+    </div>
+  </div>
+
+  <!-- Fake Urgency Banner with countdown timer -->
+  <div class="urgency-banner" id="flash-sale-banner">
+    <span>⚡ FLASH SALE ENDS IN</span>
+    <span class="timer-badge" id="countdown-timer">09:59</span>
+    <span>— DON'T MISS OUT!</span>
+  </div>
+
+  <header>
+    <div class="brand">Brightloop Home</div>
+    <nav style="display:flex;gap:20px;font-size:14px;color:#555;">
+      <span>Appliances</span>
+      <span>Cookware</span>
+      <span>Sale</span>
+    </nav>
+  </header>
+
+  <main class="main-container">
+    <div class="gallery">
+      <span class="badge-discount">-35% TODAY ONLY</span>
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="40" width="220" height="220" rx="40" fill="#2d3748" />
+        <rect x="65" y="75" width="170" height="60" rx="16" fill="#1a202c" />
+        <circle cx="150" cy="105" r="14" fill="#48bb78" />
+        <rect x="65" y="155" width="170" height="85" rx="20" fill="#4a5568" />
+        <rect x="125" y="185" width="50" height="12" rx="6" fill="#cbd5e0" />
+      </svg>
+    </div>
+
+    <div class="product-info">
+      <div class="brand-eyebrow">Brightloop Home</div>
+      <h1 id="product-title">AirCrisp Pro 6-Qt Air Fryer</h1>
+
+      <div class="rating">
+        <span class="stars">★★★★★</span> 4.6 (2,184 reviews)
+      </div>
+
+      <!-- Live viewers -->
+      <div class="live-viewers" id="viewer-count-wrap">
+        <span class="pulse-dot"></span>
+        <span id="viewer-count">37 people are looking at this right now</span>
+      </div>
+
+      <!-- Price -->
+      <div class="price-container">
+        <div class="price-row">
+          <span class="current-price" id="headline-price">$129.99</span>
+          <span class="was-price">$199.99</span>
+        </div>
+        <div class="drip-hint">+ fees calculated at checkout</div>
+      </div>
+
+      <!-- False scarcity -->
+      <div>
+        <span class="scarcity-callout" id="scarcity-pill">
+          🔥 Only 2 left in stock — order soon!
+        </span>
+      </div>
+
+      <!-- Pre-ticked Add-on -->
+      <label class="addon-card" id="addon-protection-plan">
+        <input type="checkbox" checked id="protection-plan-checkbox" />
+        <span>
+          Add 3-Year Protection Plan (+$29.99)
+        </span>
+      </label>
+
+      <!-- Primary buy button -->
+      <button class="cta-button" id="buy-now-btn">
+        BUY NOW — before it's gone!
+      </button>
+
+      <!-- Confirmshaming link -->
+      <a class="confirmshame-link" id="confirmshame-decline" href="#">
+        No thanks, I'd rather pay full price
+      </a>
+
+      <!-- Accordions -->
+      <div class="accordion" style="margin-top: 16px;">
+        <!-- Shipping & Fees details (Drip pricing source) -->
+        <details id="shipping-details" open>
+          <summary>Shipping &amp; Delivery</summary>
+          <div class="accordion-body">
+            <div class="fee-row">
+              <span>Standard Shipping</span>
+              <span>$14.99</span>
+            </div>
+            <div class="fee-row">
+              <span>Estimated Service fee</span>
+              <span>$9.99</span>
+            </div>
+            <p style="font-size:12px;color:#777;margin-top:6px;">Final calculations confirmed at checkout step 4.</p>
+          </div>
+        </details>
+
+        <!-- Buried specs section -->
+        <details id="specs-accordion">
+          <summary>Product Specifications</summary>
+          <div class="accordion-body">
+            <table class="spec-table" id="specifications-table">
+              <tbody>
+                <tr><th>Capacity</th><td>6 qt (5.7 L)</td></tr>
+                <tr><th>Power</th><td>1,700 W</td></tr>
+                <tr><th>Footprint</th><td>28 × 34 cm</td></tr>
+                <tr><th>Warranty</th><td>1 year (included)</td></tr>
+                <tr><th>Weight</th><td>11.4 lbs (5.2 kg)</td></tr>
+                <tr><th>Dishwasher Safe</th><td>Yes (basket &amp; tray)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Carousel / Clutter -->
+  <section class="recommendations" id="recommendations-section">
+    <h2>You may also like</h2>
+    <div class="carousel">
+      <div class="carousel-item">
+        <div style="height:120px;background:#eee;border-radius:8px;"></div>
+        <h4>Silicone Baking Liners</h4>
+        <p>$18.99</p>
+      </div>
+      <div class="carousel-item">
+        <div style="height:120px;background:#eee;border-radius:8px;"></div>
+        <h4>Oil Sprayer Bottle</h4>
+        <p>$14.50</p>
+      </div>
+      <div class="carousel-item">
+        <div style="height:120px;background:#eee;border-radius:8px;"></div>
+        <h4>Meat Thermometer</h4>
+        <p>$24.99</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast social proof -->
+  <div class="toast-social-proof" id="toast-social-proof">
+    <div class="toast-icon">🛒</div>
+    <div class="toast-text">
+      <strong>Sarah in Ohio</strong> just bought this
+      <span>2 minutes ago</span>
+    </div>
+  </div>
+
+  <script>
+    // Live countdown timer that resets
+    let secondsLeft = 599;
+    const timerEl = document.getElementById('countdown-timer');
+    setInterval(() => {
+      secondsLeft--;
+      if (secondsLeft < 0) secondsLeft = 599;
+      const m = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
+      const s = String(secondsLeft % 60).padStart(2, '0');
+      if (timerEl) timerEl.textContent = `${m}:${s}`;
+    }, 1000);
+
+    // Live viewers jitter
+    let viewers = 37;
+    const viewersEl = document.getElementById('viewer-count');
+    setInterval(() => {
+      viewers = Math.max(21, Math.min(58, viewers + Math.round((Math.random() - 0.45) * 6)));
+      if (viewersEl) viewersEl.textContent = `${viewers} people are looking at this right now`;
+    }, 1400);
+
+    // Modal close button
+    const closeBtn = document.querySelector('.modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        document.getElementById('newsletter-modal').style.display = 'none';
+      });
+    }
+  </script>
+</body>
+</html>
