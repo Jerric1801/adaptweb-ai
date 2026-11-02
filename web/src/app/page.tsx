@@ -212,6 +212,23 @@ export default function Home() {
           </p>
         </div>
         <LiveDemo />
+
+        <div className="mt-16">
+          <p className="mono-label text-xs text-forest">Watch · 2 min</p>
+          <h3 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
+            See it work on a real store.
+          </h3>
+          <video
+            className="mt-6 aspect-video w-full rounded-2xl border border-ink/10 bg-ink shadow-xl"
+            src="/adaptweb-demo.mp4"
+            controls
+            playsInline
+            preload="metadata"
+          >
+            Your browser can&apos;t play this video.{" "}
+            <a href="/adaptweb-demo.mp4">Download the demo</a>.
+          </video>
+        </div>
       </section>
 
       {/* Patterns */}
